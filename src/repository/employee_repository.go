@@ -10,6 +10,12 @@ func GetAllEmployees() ([]model.Employee, error) {
 	return employees, result.Error
 }
 
+func GetEmployeeByID(id string) (*model.Employee, error) {
+	var employee model.Employee
+	result := model.DB.First(&employee, id)
+	return &employee, result.Error
+}
+
 func CreateEmployee(employee *model.Employee) error {
 	return model.DB.Create(employee).Error
 }
